@@ -6,6 +6,10 @@
 
 .goal-list li {
   margin: 1.2rem 0;
-  border: 2px solid rgb(137, 168, 173);
+  background-color: rgb(33, 64, 85);
+  border: 2px solid rgb(79, 134, 168);
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
   padding: 1.2rem;
 }
