@@ -8,7 +8,7 @@ const PlaceItem = (props) => {
     <li className="place-item">
       <Card className="place-item__content">
         <div className="place-item__image">
-          <img src={props.img} />
+          <img src={props.img} alt="Temp Alt" />
         </div>
         <div className="place-item__info">
           <h2>{props.title}</h2>
