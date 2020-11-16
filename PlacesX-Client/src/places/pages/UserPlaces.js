@@ -7,7 +7,7 @@ const DUMMY = [
     id: "1",
     title: "The Grove",
     description: "Shopping Mall",
-    imageUrl: "../../assets/1.png",
+    imageUrl: "",
     location: {
       lat: 40.7,
       lng: -73,
