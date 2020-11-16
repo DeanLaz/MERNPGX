@@ -4,7 +4,7 @@
   border: 1px solid hsl(34, 100%, 39%);
   border-radius: 4px;
   background: 774700;
-  color: white;
+  color: rgb(124, 81, 0);
   cursor: pointer;
   margin-right: 1rem;
   text-decoration: none;
@@ -19,6 +19,7 @@
 .button:active {
   background: hsl(34, 100%, 39%);
   border-color: hsl(34, 100%, 39%);
+  color: white;
 }
 
 .button--inverse {
@@ -33,8 +34,9 @@
 }
 
 .button--danger {
-  background: hsl(34, 100%, 39%);
+  background: hsl(34, 100%, 23%);
   border-color: hsl(34, 100%, 39%);
+  color: white;
 }
 
 .button--danger:hover,
@@ -46,8 +48,8 @@
 .button:disabled,
 .button:hover:disabled,
 .button:active:disabled {
-  background: #ccc;
-  color: #ffd000;
+  background: rgb(150, 150, 150);
+  color: #ffffff;
   border-color: #ccc;
   cursor: not-allowed;
 }
