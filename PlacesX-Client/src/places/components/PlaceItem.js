@@ -1,13 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 
 import Card from "../../shared/components/UIElements/Card";
 import Button from "../../shared/components/FormElements/Button";
 import Modal from "../../shared/components/UIElements/Modal";
 import MapX from "../../shared/components/UIElements/MapX";
-import "./PlaceList.css";
+import { AuthContext } from "../../shared/context/auth-context";
+import "./PlaceItem.css";
+
 const PlaceItem = (props) => {
+  const auth = useContext(AuthContext);
   const [showMap, setShowMap] = useState(false);
   const [showConfirmModal, setShowConfirmModal] = useState(false);
+
   const openMapHandler = () => setShowMap(true);
 
   const closeMapHandler = () => setShowMap(false);
@@ -15,14 +19,16 @@ const PlaceItem = (props) => {
   const showDeleteWarningHandler = () => {
     setShowConfirmModal(true);
   };
+
   const cancelDeleteHandler = () => {
     setShowConfirmModal(false);
   };
 
   const confirmDeleteHandler = () => {
     setShowConfirmModal(false);
-    console.log("DELETING");
+    console.log("DELETING...");
   };
+
   return (
     <React.Fragment>
       <Modal
@@ -53,12 +59,15 @@ const PlaceItem = (props) => {
           </React.Fragment>
         }
       >
-        <p>Proceed and Delete this Location? (This Action cannot be undone.</p>
+        <p>
+          Do you want to proceed and delete this place? Please note that it
+          can't be undone thereafter.
+        </p>
       </Modal>
       <li className="place-item">
         <Card className="place-item__content">
           <div className="place-item__image">
-            <img src={props.image} alt={props.alt} />
+            <img src={props.image} alt={props.title} />
           </div>
           <div className="place-item__info">
             <h2>{props.title}</h2>
@@ -67,12 +76,17 @@ const PlaceItem = (props) => {
           </div>
           <div className="place-item__actions">
             <Button inverse onClick={openMapHandler}>
-              Map View
+              VIEW ON MAP
             </Button>
-            <Button to={`/places/${props.id}`}>Edit Place</Button>
-            <Button danger onClick={showDeleteWarningHandler}>
-              Remove Place
-            </Button>
+            {auth.isLoggedIn && (
+              <Button to={`/places/${props.id}`}>EDIT</Button>
+            )}
+
+            {auth.isLoggedIn && (
+              <Button danger onClick={showDeleteWarningHandler}>
+                DELETE
+              </Button>
+            )}
           </div>
         </Card>
       </li>
