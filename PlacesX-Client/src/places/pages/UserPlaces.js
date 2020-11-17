@@ -5,12 +5,13 @@ import PlaceList from "../components/PlaceList";
 const DUMMY = [
   {
     id: "1",
-    title: "The Grove",
-    description: "Shopping Mall",
+    title: "New York",
+    description: "Empire State Building",
     imageUrl: "",
+    address: "20 W 34th St, New York, NY 10001",
     location: {
-      lat: 40,
-      lng: 73,
+      lat: 40.1029384,
+      lng: -73.1029348,
     },
     creator: "1",
   },
