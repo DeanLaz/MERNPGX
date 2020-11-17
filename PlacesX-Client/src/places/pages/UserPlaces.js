@@ -9,8 +9,8 @@ const DUMMY = [
     description: "Shopping Mall",
     imageUrl: "",
     location: {
-      lat: 40.7,
-      lng: -73,
+      lat: 40,
+      lng: 73,
     },
     creator: "1",
   },
