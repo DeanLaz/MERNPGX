@@ -1,5 +1,7 @@
 const express = require("express");
 
+const HttpError = require("../models/http-error");
+
 const router = express.Router();
 
 const DUMMY = [
@@ -22,9 +24,7 @@ router.get("/:pid", (req, res, next) => {
   });
 
   if (!place) {
-    const error = new Error("No Valid ID for this Place!");
-    error.code = 404;
-    return next(error);
+    return next(new HttpError("No Valid ID for this Place!", 404));
   }
   res.json({ place });
 });
@@ -35,9 +35,7 @@ router.get("/user/:uid", (req, res, next) => {
     return p.creator === userId;
   });
   if (!place) {
-    const error = new Error("Not a Valid ID for this Creator!");
-    error.code = 404;
-    return next(error);
+    return next(new HttpError("Not a Valid ID for this Creator!", 404));
   }
   res.json({ place });
 });
