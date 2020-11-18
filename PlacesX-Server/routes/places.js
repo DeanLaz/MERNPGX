@@ -20,6 +20,12 @@ router.get("/:pid", (req, res, next) => {
   const place = DUMMY.find((p) => {
     return p.id === placeId;
   });
+
+  if (!place) {
+    const error = new Error("No Valid ID for this Place!");
+    error.code = 404;
+    return next(error);
+  }
   res.json({ place });
 });
 
@@ -28,6 +34,11 @@ router.get("/user/:uid", (req, res, next) => {
   const place = DUMMY.find((p) => {
     return p.creator === userId;
   });
+  if (!place) {
+    const error = new Error("Not a Valid ID for this Creator!");
+    error.code = 404;
+    return next(error);
+  }
   res.json({ place });
 });
 
