@@ -1,9 +1,3 @@
-const express = require("express");
-
-const HttpError = require("../models/http-error");
-
-const router = express.Router();
-
 const DUMMY = [
   {
     id: "p1",
@@ -17,7 +11,7 @@ const DUMMY = [
   },
 ];
 
-router.get("/:pid", (req, res, next) => {
+const getPlaceById = (req, res, next) => {
   const placeId = req.params.pid;
   const place = DUMMY.find((p) => {
     return p.id === placeId;
@@ -27,9 +21,9 @@ router.get("/:pid", (req, res, next) => {
     return next(new HttpError("No Valid ID for this Place!", 404));
   }
   res.json({ place });
-});
+};
 
-router.get("/user/:uid", (req, res, next) => {
+const getPlaceByUserId = (req, res, next) => {
   const userId = req.params.uid;
   const place = DUMMY.find((p) => {
     return p.creator === userId;
@@ -38,6 +32,7 @@ router.get("/user/:uid", (req, res, next) => {
     return next(new HttpError("Not a Valid ID for this Creator!", 404));
   }
   res.json({ place });
-});
+};
 
-module.exports = router;
+exports.getPlaceById = getPlaceById;
+exports.getPlaceByUserId = getPlaceByUserId;
