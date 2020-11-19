@@ -2,12 +2,12 @@
 
 ## PlacesX
 
-### FullStack MERN
+### FullStack JavaScript React & NodeJS Backend + MongoDB Database
 
-Media Application - Create Accounts, Add Places, Google Maps, MongoDB, Etc.
+Media Application - A Media App -C reate Accounts, Add Places, Etc.
 
-- FrontEnd - [ ReactJS ]
-- BackEnd [ NodeJS, Express, MongoDB ]
+- Client - [ ReactJS ]
+- Server - [ NodeJS, JS Google Maps, Geolocation MongoDB, Mongoose ]
 
 ## GoalsX
 
@@ -19,7 +19,11 @@ Sample MERN Stack Application for Reference
 
 ## SampleNodeJS
 
-Basic Node + Express Practice
+NodeJS + Express Refresher Course Project
+
+## SampleMongoDB
+
+NodeJS + MongoDB Refresher Course Project
 
 ## Credits
 
