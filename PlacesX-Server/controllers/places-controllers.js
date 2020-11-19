@@ -1,14 +1,15 @@
 const uuid = require("uuid/v4");
 
-const DUMMY = [
+let DUMMY = [
   {
     id: "p1",
     title: "empire state",
-    descriptions: "One of the",
+    description: "One of the Largest",
     location: {
       lat: 40.7484474,
+      lng: 40.7484474,
     },
-    adress: "20 W 34th St, New York, NY 10001",
+    address: "20 W 34th St, New York, NY 10001",
     creator: "u1",
   },
 ];
@@ -40,17 +41,43 @@ const createPlace = (req, res, next) => {
   const { title, description, coordinates, address, creator } = req.body;
   const createdPlace = {
     id: uuid(),
-    tite: title,
+    title,
     description,
     location: coordinates,
     address,
-    creator: creator,
+    creator,
   };
 
   DUMMY.push(createdPlace);
   res.status(201).json({ place: createdPlace });
 };
 
+const updatePlace = (req, res, next) => {
+  const { title, description } = req.body;
+  const placeId = req.params.pid;
+  const updatedPlace = { ...DUMMY.find((p) => p.id === placeId) };
+  const placeIndex = DUMMY.findIndex((p) => p.id === placeId);
+  updatedPlace.title = title;
+  updatedPlace.description = description;
+
+  DUMMY[placeIndex] = updatedPlace;
+  res.status(200).json({ place: updatedPlace });
+};
+
+const deletePlace = (req, res, next) => {
+  const placeId = req.params.pid;
+  DUMMY = DUMMY.filter((p) => p.id !== placeId);
+  res.status(200).json({ message: "Place Deleted!" });
+};
+
+// EXPORTS //
+
 exports.getPlaceById = getPlaceById;
+
 exports.getPlaceByUserId = getPlaceByUserId;
+
 exports.createPlace = createPlace;
+
+exports.deletePlace = deletePlace;
+
+exports.updatePlace = updatePlace;
