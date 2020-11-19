@@ -3,13 +3,13 @@ const uuid = require("uuid/v4");
 let DUMMY = [
   {
     id: "p1",
-    title: "empire state",
-    description: "One of the Largest",
+    title: "The Grove",
+    description: "Los Angeles Outside Shopping Mall",
     location: {
       lat: 40.7484474,
       lng: 40.7484474,
     },
-    address: "20 W 34th St, New York, NY 10001",
+    address: "Los Angeles, CA 90045",
     creator: "u1",
   },
 ];
@@ -26,15 +26,15 @@ const getPlaceById = (req, res, next) => {
   res.json({ place });
 };
 
-const getPlaceByUserId = (req, res, next) => {
+const getPlacesByUserId = (req, res, next) => {
   const userId = req.params.uid;
-  const place = DUMMY.find((p) => {
+  const places = DUMMY.filter((p) => {
     return p.creator === userId;
   });
-  if (!place) {
+  if (!places || places.length === 0) {
     return next(new HttpError("Not a Valid ID for this Creator!", 404));
   }
-  res.json({ place });
+  res.json({ places });
 };
 
 const createPlace = (req, res, next) => {
@@ -74,7 +74,7 @@ const deletePlace = (req, res, next) => {
 
 exports.getPlaceById = getPlaceById;
 
-exports.getPlaceByUserId = getPlaceByUserId;
+exports.getPlacesByUserId = getPlacesByUserId;
 
 exports.createPlace = createPlace;
 
