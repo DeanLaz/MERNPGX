@@ -1,5 +1,5 @@
 const uuid = require("uuid/v4");
-
+const { validationResult } = require("express-validator");
 const HttpError = require("../models/http-error");
 
 const USERS = [
@@ -15,6 +15,10 @@ const getUsers = (req, res, next) => {
   res.status({ users: USERS });
 };
 const signup = (req, res, next) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    throw new HttpError("Invalid Inputs!", 422);
+  }
   const { name, email, password } = req.body;
 
   const hasUser = USER.find((u) => u.email === email);
@@ -35,7 +39,7 @@ const login = (req, res, next) => {
 
   const identifiedUser = USERS.find((u) => u.email === email);
   if (!identifiedUser || identifiedUser.password !== password) {
-    throw newHttpError(
+    throw new HttpError(
       "Could not identify user, credential seeem to be wrong",
       401
     );
