@@ -51,8 +51,10 @@ const Auth = () => {
     }
     setIsLoginMode((prevMode) => !prevMode);
   };
-  const authSubmitHandler = (event) => {
+  const authSubmitHandler = async (event) => {
     event.preventDefault();
+
+    fetch("http://localhost:5000/api/users/signup");
     auth.login();
   };
   return (
