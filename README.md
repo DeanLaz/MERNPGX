@@ -1,4 +1,6 @@
-# MERNPGX
+# MERNPGX -
+
+Course Project by DeanLaz
 
 ## PlacesX
 
@@ -25,7 +27,7 @@ NodeJS + Express Refresher Course Project
 
 NodeJS + MongoDB Refresher Course Project
 
-## Credits
+## Credit
 
 ### Maximilian's "React, NodeJS, Express & MONGODB - The MERN Fullstack Guide"
 
